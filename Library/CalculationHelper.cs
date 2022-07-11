@@ -1,5 +1,6 @@
 ﻿using System;
-namespace Project_Library
+
+namespace Library
 {
     public class CalculationHelper
     {
@@ -84,6 +85,11 @@ namespace Project_Library
             double x1 = double.NaN;
             double x2 = double.NaN;
             double sqrtOfDiscriminant = Math.Sqrt((b * b) - (4 * a * c));
+
+            if (a == 0)
+            {
+                throw new ArgumentException();
+            }
 
             if (double.IsNaN(sqrtOfDiscriminant))
             {

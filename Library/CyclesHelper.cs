@@ -1,5 +1,6 @@
 ﻿using System;
-namespace Project_Library
+
+namespace Library
 {
     public class CyclesHelper
     {
@@ -7,9 +8,16 @@ namespace Project_Library
         {
             int sum = number;
 
-            for (int i = 1; i < raise; i++)
+            if (raise != 0)
             {
-                sum *= number;
+                for (int i = 1; i < raise; i++)
+                {
+                    sum *= number;
+                }
+            }
+            else
+            {
+                sum = 1;
             }
 
             return sum;
@@ -37,7 +45,7 @@ namespace Project_Library
 
             for (int i = a / 2; i > 1; i--)
             {
-                if (a % 1 == 0)
+                if (a % i == 0)
                 {
                     result += i;
                     break;
@@ -54,10 +62,11 @@ namespace Project_Library
                 Swap(ref a, ref b);
             }
 
+            const int X = 7;
             int result = default;
             for (int i = a; i <= b; i++)
             {
-                if (i % 7 == 0)
+                if (i % X == 0)
                 {
                     result += i;
                 }
@@ -88,6 +97,11 @@ namespace Project_Library
 
         public static int GetGreatestDivisiorByEuclid(int a, int b)
         {
+            if (a < 0 || b < 0 )
+            {
+                throw new ArgumentException();
+            }
+
             while ((a != 0) && (b != 0))
             {
                 if (a > b)
@@ -103,17 +117,26 @@ namespace Project_Library
             return a + b;
         }
 
-        public static double GetNumberByBinaryAlgorithm(double a)
+        public static int GetNumberByBinaryAlgorithm(int a)
         {
+            if (a <= 0)
+            {
+                throw new ArgumentException();
+            }
 
-            double n = default;
+            if (a % 3 != 0 )
+            {
+                throw new FormatException();
+            }
+
+            int n = default;
             int min = 1;
-            double temp = a;
+            int temp = a;
 
             while (min <= a)
             {
-                double mid = a / 2;
-                double cubicValue = mid * mid * mid;
+                int mid = a / 2;
+                int cubicValue = mid * mid * mid;
                 if (cubicValue > temp)
                 {
                     a = mid;
@@ -144,7 +167,6 @@ namespace Project_Library
                 {
                     count++;
                 }
-
                 number /= 10;
             }
 

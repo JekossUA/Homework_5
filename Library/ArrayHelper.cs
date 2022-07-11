@@ -1,19 +1,20 @@
 ﻿using System;
-namespace Project_Library
+
+namespace Library
 {
     public class ArrayHelper
     {
         public static int GetMinElement(int[] array)
         {
-            return array[GetMinIndexOfElement(array)];
+            return array[GetMinIndexOfArray(array)];
         }
 
         public static int GetMaxElement(int[] array)
         {
-            return array[GetMaxIndexOfElement(array)];
+            return array[GetMaxIndexOfArray(array)];
         }
 
-        public static int GetMinIndexOfElement(int[] array)
+        public static int GetMinIndexOfArray(int[] array)
         {
             if (array == null || array.Length == 0)
             {
@@ -33,7 +34,7 @@ namespace Project_Library
             return min;
         }
 
-        public static int GetMaxIndexOfElement(int[] array)
+        public static int GetMaxIndexOfArray(int[] array)
         {
             if (array == null || array.Length == 0)
             {
