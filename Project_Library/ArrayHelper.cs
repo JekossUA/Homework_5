@@ -1,74 +1,179 @@
 ﻿using System;
-
 namespace Project_Library
 {
     public class ArrayHelper
     {
-            //Find the number of array elements that are greater than all their neighbors at the same time
-            //Flip an array about its main diagonal
-
-        public static int GetMinElementOfArray(int[,] array )
+        public static int GetMinElement(int[] array)
         {
-            (int minRow, int minCol) = GetMinIndex(array);
-            return array[minRow, minCol];
+            return array[GetMinIndexOfElement(array)];
         }
 
-        public static int GetMaxElementOfArray(int[,] array)
+        public static int GetMaxElement(int[] array)
         {
-            (int maxRow, int maxCol) = GetMaxIndex(array);
-            return array[maxRow, maxCol];
+            return array[GetMaxIndexOfElement(array)];
         }
 
-        public static (int minRow, int minCol) GetMinIndex(int [,] array)
+        public static int GetMinIndexOfElement(int[] array)
+        {
+            if (array == null || array.Length == 0)
+            {
+                throw new ArgumentException("Array null or empty");
+            }
+
+            int min = default;
+
+            for (int i = 0; i < array.Length; i++)
+            {
+                if (array[i] < array[min])
+                {
+                    min = i;
+                }
+            }
+
+            return min;
+        }
+
+        public static int GetMaxIndexOfElement(int[] array)
+        {
+            if (array == null || array.Length == 0)
+            {
+                throw new ArgumentException("Array null or empty");
+            }
+
+            int max = default;
+
+            for (int i = 0; i < array.Length; i++)
+            {
+                if (array[i] > array[max])
+                {
+                    max = i;
+                }
+            }
+
+            return max;
+        }
+
+        public static int GetSumOfOddIndexElements(int[] array)
         {
             if (array == null)
             {
                 throw new NullReferenceException();
             }
 
-            int minRow = 0;
-            int minCol = 0;
-            int min = array[0, 0];
-            for (int i = 0; i < array.GetLength(0); i++)
+            int sum = default;
+
+            for (int i = 1; i < array.Length; i += 2)
             {
-                for (int j = 0; j < array.GetLength(1); j++)
-                {
-                    if (min > array[i, j])
-                    {
-                        min = array[i, j];
-                        minRow = i;
-                        minCol = j;
-                    }
-                }
+                sum += array[i];
             }
 
-            return (minRow, minCol);
+            return sum;
         }
 
-        public static (int maxRow, int maxCol) GetMaxIndex(int[,] array)
+        public static int[] ReverseArray(int[] array)
         {
             if (array == null)
             {
                 throw new NullReferenceException();
             }
 
-            int maxRow = 0;
-            int maxCol = 0;
-            int max = array[0, 0];
-            for (int i = 0; i < array.GetLength(0); i++)
+            int lastIndex = array.Length - 1;
+            int halfSize = array.Length / 2;
+            for (int i = 0; i < halfSize; i++)
             {
-                for (int j = 0; j < array.GetLength(1); j++)
+                Swap(ref array[i], ref array[lastIndex--]);
+            }
+
+            return array;
+        }
+
+        public static int GetCountOfOdds(int[] array)
+        {
+            if (array == null)
+            {
+                throw new NullReferenceException();
+            }
+
+            int count = default;
+
+            for (int i = 0; i < array.Length; i++)
+            {
+                if (array[i] % 2 != 0)
                 {
-                    if (max < array[i, j])
+                    ++count;
+                }
+            }
+
+            return count;
+        }
+
+        public static int[] SwapHalfOfArray(int[] array)
+        {
+            if (array == null)
+            {
+                throw new NullReferenceException();
+            }
+
+            int halfSize = array.Length / 2;
+            int rightSideStartPosition = halfSize + array.Length % 2;
+            for (int i = 0; i < halfSize; i++)
+            {
+                Swap(ref array[i], ref array[rightSideStartPosition + i]);
+            }
+
+            return array;
+        }
+
+        public static int[] InsertionSorting(int[] array)
+        {
+            if (array == null)
+            {
+                throw new NullReferenceException();
+            }
+
+            for (int i = 1; i < array.Length; i++)
+            {
+                int value = array[i];
+                for (int j = i - 1; j >= 0;)
+                {
+                    if (value < array[j])
                     {
-                        max = array[i, j];
-                        maxRow = i;
-                        maxCol = j;
+                        array[j + 1] = array[j];
+                        j--;
+                        array[j + 1] = value;
+                    }
+                    else
+                    {
+                        break;
                     }
                 }
             }
 
-            return (maxRow, maxCol);
+            return array;
+        }
+
+        public static int[] SelectionDescendingSorting(int[] array)
+        {
+            if (array == null)
+            {
+                throw new NullReferenceException();
+            }
+
+            for (int i = 0; i < array.Length - 1; i++)
+            {
+                int smalestIndex = i;
+                for (int j = i + 1; j < array.Length; j++)
+                {
+                    if (array[j] > array[smalestIndex])
+                    {
+                        smalestIndex = j;
+                    }
+                }
+
+                Swap(ref array[smalestIndex], ref array[i]);
+            }
+
+            return array;
         }
 
         private static void Swap(ref int a, ref int b)
