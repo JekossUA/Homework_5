@@ -130,7 +130,7 @@ namespace Library.Tests
         {
             int[] actual = ArrayHelper.ReverseArray(array);
 
-            Assert.AreEqual(expected, actual);
+            CollectionAssert.AreEqual(expected, actual);
         }
 
         [TestCase(null)]
@@ -174,7 +174,7 @@ namespace Library.Tests
         {
             int[] actual = ArrayHelper.SwapHalfOfArray(array);
 
-            Assert.AreEqual(expected, actual);
+            CollectionAssert.AreEqual(expected, actual);
         }
 
         [TestCase(null)]
@@ -196,7 +196,7 @@ namespace Library.Tests
         {
             int[] actual = ArrayHelper.InsertionSorting(array);
 
-            Assert.AreEqual(expected, actual);
+            CollectionAssert.AreEqual(expected, actual);
         }
 
         [TestCase(null)]
@@ -218,7 +218,7 @@ namespace Library.Tests
         {
             int[] actual = ArrayHelper.SelectionDescendingSorting(array);
 
-            Assert.AreEqual(expected, actual);
+            CollectionAssert.AreEqual(expected, actual);
         }
 
         [TestCase(null)]

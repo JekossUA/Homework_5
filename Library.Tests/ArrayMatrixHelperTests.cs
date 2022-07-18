@@ -319,7 +319,7 @@ namespace Library.Tests
         {
             int[,] actual = ArrayMatrixHelper.FlippMatrixAboutItsMainDiagonal(matrix);
 
-            Assert.AreEqual(expected, actual);
+            CollectionAssert.AreEqual(expected, actual);
         }
 
         private static object[] DataForEmptyAndIncorrectFlippMatrix =

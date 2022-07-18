@@ -91,6 +91,48 @@ namespace Library
 
             return flippedMatrix;
         }
+
+        //test
+        public static int FindTheNumberThatAreGreaterThanAllTheirNeighbors(int[,] matrix)
+        {
+            if (matrix == null || matrix.Length == 0)
+            {
+                throw new ArgumentException("Empty or null matrix");
+            }
+
+            int maxValue = 0;
+            for (int i = 0; i < matrix.GetLength(0); i++)
+            {
+                for (int j = 0; j < matrix.GetLength(1); j++)
+                {
+                    int temp = 0;
+
+                    for (int k = i - 1; k <= i + 1; k++)
+                    {
+                        if (k >= 0 && k <= matrix.GetLength(0) - 1)
+                        {
+                            for (int o = j - 1; o <= j + 1; o++)
+                            {
+                                if (o >= 0 && o <= matrix.GetLength(1) - 1 && (k != i || o != j))
+                                {
+                                    if (temp < matrix[k, o])
+                                    {
+                                        temp = matrix[k, o];
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    if (matrix[i, j] > temp)
+                    {
+                        maxValue++;
+                    }
+                }
+            }
+
+            return maxValue;
+        }
     }
 }
 
