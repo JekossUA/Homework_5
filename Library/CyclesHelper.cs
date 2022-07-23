@@ -17,7 +17,7 @@ namespace Library
             }
             else if (raise < 0)
             {
-                sum = 1 / Math.Pow(number, raise);
+                sum = Math.Pow(number, raise);
             }
             else
             {

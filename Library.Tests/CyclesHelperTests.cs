@@ -12,6 +12,7 @@ namespace Library.Tests
         [TestCase(2, -4, 16d)]
         [TestCase(0, 2, 0)]
         [TestCase(0, -2, 0)]
+        [TestCase(5, -3, 0)]
         public void RaiseToThePower_WhenNumberAndPowerPassed_ShouldRaisToThePower
             (double number, double power, double expected)
         {
