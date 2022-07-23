@@ -4,16 +4,20 @@ namespace Library
 {
     public class CyclesHelper
     {
-        public static int RaiseToThePower(int number, int raise)
+        public static double RaiseToThePower(double number, double raise)
         {
-            int sum = number;
+            double sum = number;
 
-            if (raise != 0)
+            if (raise > 0)
             {
                 for (int i = 1; i < raise; i++)
                 {
                     sum *= number;
                 }
+            }
+            else if (raise < 0)
+            {
+                sum = 1 / Math.Pow(number, raise);
             }
             else
             {

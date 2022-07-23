@@ -9,12 +9,13 @@ namespace Library.Tests
         [TestCase(5, 2, 25)]
         [TestCase(-3, 2, 9)]
         [TestCase(-3, 3, -27)]
-        [TestCase(2, -4, 2)]
+        [TestCase(2, -4, 16d)]
         [TestCase(0, 2, 0)]
+        [TestCase(0, -2, 0)]
         public void RaiseToThePower_WhenNumberAndPowerPassed_ShouldRaisToThePower
-            (int number, int power, int expected)
+            (double number, double power, double expected)
         {
-            int actual = CyclesHelper.RaiseToThePower(number, power);
+            double actual = CyclesHelper.RaiseToThePower(number, power);
 
             Assert.AreEqual(expected, actual);
         }
